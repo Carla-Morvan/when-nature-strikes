@@ -56,9 +56,8 @@ Two processed datasets are provided in the `data/` folder. `data_budgetco.parque
 
 All estimations use the non-binary staggered difference-in-differences estimator implemented in the `DIDmultiplegtDYN` R package. The treatment variable is the cumulative number of flood and storm events since 2000 (`FLOODS_cumule2000`). Outcome variables include investment expenditures, current expenditures, grants, debt stock, and property and business tax rates and bases, all transformed using the inverse hyperbolic sine. Estimations use `normalized = TRUE`, `trends_nonparam = "risk_group"`, `cluster = "cod_commune"`, `effects = 10`, and `placebo = 3`. See Section 3 of the paper for details on the identification strategy.
 
-Reference:  - de Chaisemartin, C. & D'Haultfoeuille, X. (2024). *Difference-in-Differences Estimators of Intertemporal Treatment Effects*.The Review of Economics and Statistics. 
-- de Chaisemartin, C. & D'Haultfoeuille, X. (2026). *Causal Inference with Differences-in-447
-Differences: Credible Answers to Hard Questions*. Princeton University Press. 
+Reference: de Chaisemartin, C. & D'Haultfoeuille, X. (2024). *Difference-in-Differences Estimators of Intertemporal Treatment Effects*.The Review of Economics and Statistics. 
+
 
 ## Sample Construction
 
