@@ -89,7 +89,6 @@
 | `fbtp` | Tax base | €/inhab |
 | `fptp` | Tax revenues | €/inhab |
 | `ttp` | Voted tax rate | % |
-| `fpcfe` | CFE revenues (post-2010) | €/inhab |
 
 #### Aggregated variables
 | Variable | Description | Unit |
