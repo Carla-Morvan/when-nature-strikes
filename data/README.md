@@ -116,8 +116,8 @@ All budget variables are also provided in inverse hyperbolic sine (IHS) transfor
 |----------|-------------|
 | `AAV2020` | Urban area code (Aires d'attraction des villes 2020) |
 | `LIBAAV2020` | Urban area name |
-| `montagne` | Mountain municipality (MONTAGNE / PLAINE) |
-| `littoral_clean` | Coastal municipality (LITTORAL / TERRE) |
+| `montagne` | Mountain municipality (dummy) |
+| `littoral_clean` | Coastal municipality (dummy) |
 | `DENS` | Population density category (1 = urban, 7 = rural) |
 
 #### Heterogeneity variables
