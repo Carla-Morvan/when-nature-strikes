@@ -11,9 +11,7 @@ This repository contains the replication code for the paper *"When Nature Strike
     .
     ├── README.md
     ├── data/
-    │   ├── README_data.md
-    │   ├── data_budgetco.parquet
-    │   └── catnat_gaspar.csv
+    │   ├── README.md
     ├── code/
     │   ├── 00_prepare_data_public.R
     │   ├── 01_build_sample.R
