@@ -11,19 +11,21 @@ This repository contains the replication code for the paper *"When Nature Strike
     .
     ├── README.md
     ├── data/
-    │   ├── README.md
-    ├── code/
-    │   ├── 00_prepare_data_public.R
-    │   ├── 01_build_sample.R
-    │   ├── 02_estimation.R
-    │   ├── 03_figures.R
-    │   └── 04_tables.R
+    │   └── README.md              # Data sources and variable dictionary
+    └── code/
+        ├── 00_prepare_data.R      # Build base dataset from raw data
+        ├── 01_build_sample.R      # Build estimation sample
+        ├── 02_estimation.R        # Run all estimations
+        ├── 03_figures.R           # Generate all figures
+        └── 04_tables.R            # Generate all tables
 
 ## Data
 
-Two processed datasets are provided in the `data/` folder. `data_budgetco.parquet` contains municipal budget accounts for all French mainland municipalities over 2000--2024, merged with socioeconomic and geographic controls. `catnat_gaspar.csv` contains natural disaster records from the GASPAR database (French Ministry of Environment), covering 1982--2024. See `data/README_data.md` for a complete description of sources and variables.
+No processed data files are included in this repository due to size constraints. All raw data are publicly available from the sources listed in `data/README.md`, with the exception of the AFL financial health score (see Note on Replication below).
 
-**Note on geographic data**: The map figure requires shapefiles for French municipalities and national boundaries, available from [IGN AdminExpress](https://geoservices.ign.fr/adminexpress). These files are not included in the repository due to size constraints.
+To replicate the analysis, download the raw data from the sources listed in `data/README.md` and run `00_prepare_data.R` to build the base dataset, then proceed with the subsequent scripts.
+
+**Note on geographic data**: The map figure requires shapefiles for French municipalities and national boundaries, available from [OpenStreetMap](https://www.data.gouv.fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap).
 
 ## Replication
 
@@ -32,26 +34,30 @@ Two processed datasets are provided in the `data/` folder. `data_budgetco.parque
     install.packages(c(
       "arrow", "dplyr", "tidyr", "readr", "stringr",
       "lubridate", "ggplot2", "patchwork", "sf",
-      "DIDmultiplegtDYN", "knitr", "scales"
+      "DIDmultiplegtDYN", "knitr", "scales", "purrr"
     ))
 
-**Steps**: Run the scripts in order. `01_build_sample.R` builds the estimation sample from the provided data. `02_estimation.R` runs all estimations. `03_figures.R` generates all figures. `04_tables.R` generates all tables.
+**Steps**: Run the scripts in order.
+
+- `00_prepare_data.R` builds the base dataset from raw data sources.
+- `01_build_sample.R` builds the estimation sample `df_run`.
+- `02_estimation.R` runs all estimations.
+- `03_figures.R` generates all figures.
+- `04_tables.R` generates all tables.
 
 **Warning**: `02_estimation.R` is computationally intensive. Each estimation takes approximately 30--60 minutes. The full set of estimations may take several days to complete.
 
-**Output paths**: By default, results are saved to `results/`, figures to `figures/`, and tables to `tables/`. Adapt the `results_path` variable at the top of each script to match your local setup.
+**Output paths**: Results are saved to `results/`, figures to `figures/`, and tables to `tables/`. Adapt the `results_path` variable at the top of each script to match your local setup.
 
 ## Note on Replication
 
-All results except the heterogeneity analysis by financial health are fully replicable from the provided data and code. 
-The AFL financial health score used in Table 4 is based on a proprietary banking formula and the corresponding data are not publicly available. Results from this analysis are available upon reasonable request.
+All results except the heterogeneity analysis by financial health are fully replicable from publicly available data and the provided code. The AFL financial health score used in the heterogeneity section is based on a proprietary banking formula developed by the AFL (Agence France Locale); the underlying data are not publicly available. Results from this analysis are available upon reasonable request.
 
 ## Estimation Method
 
 All estimations use the non-binary staggered difference-in-differences estimator implemented in the `DIDmultiplegtDYN` R package. The treatment variable is the cumulative number of flood and storm events since 2000 (`FLOODS_cumule2000`). Outcome variables include investment expenditures, current expenditures, grants, debt stock, and property and business tax rates and bases, all transformed using the inverse hyperbolic sine. Estimations use `normalized = TRUE`, `trends_nonparam = "risk_group"`, `cluster = "cod_commune"`, `effects = 10`, and `placebo = 3`. See Section 3 of the paper for details on the identification strategy.
 
-Reference: de Chaisemartin, C. & D'Haultfoeuille, X. (2024). *Difference-in-Differences Estimators of Intertemporal Treatment Effects*.The Review of Economics and Statistics. 
-
+Reference: de Chaisemartin, C. & D'Haultfoeuille, X. (2024). *Difference-in-Differences Estimators of Intertemporal Treatment Effects*. The Review of Economics and Statistics.
 
 ## Sample Construction
 
