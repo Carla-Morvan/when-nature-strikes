@@ -4,42 +4,31 @@
 
 ### Municipal Budget Data
 - **Source**: French Ministry of Public Accounts (Direction Générale des Finances Publiques)
-- **URL**: https://data.economie.gouv.fr/explore/dataset/comptes-individuels-des-communes-fichier-global
+- **URL**: https://data.economie.gouv.fr/explore/?search=comptes-individuels-des-communes
 - **Coverage**: All French mainland municipalities, 2000--2024
 - **Format**: Parquet files by period (downloaded March 2026)
 
 ### Natural Disaster Data
 - **Source**: GASPAR database (Gestion ASsistée des Procédures Administratives relatives aux Risques), French Ministry of Environment
-- **URL**: https://www.georisques.gouv.fr/donnees/bases-de-donnees/gaspar
+- **URL**: https://www.georisques.gouv.fr/donnees/bases-de-donnees/procedures-administratives-relatives-aux-risques
 - **Coverage**: All recognized natural disasters (CatNat) in France since 1982
 
 ### Socioeconomic Data
-- **Median household income (MEDREV)**: INSEE, Filosofi survey — https://www.insee.fr/fr/statistiques/6036907
-- **Population (total_pop, pop_20, pop_65)**: INSEE, legal population estimates
-- **Urban area typology (AAV2020)**: INSEE, Aires d'attraction des villes 2020
-- **Population density (DENS)**: INSEE, Grille de densité 2015
-- **Coastal municipalities (littoral_clean)**: DATAR, Loi Littoral classification
-- **Mountain municipalities (montagne)**: DATAR, Loi Montagne classification
+- **Median household income**: INSEE, Filosofi survey -- https://www.insee.fr/fr/statistiques/6036907
+- **Population**: INSEE, legal population estimates -- https://www.insee.fr/fr/statistiques/1893204
+- **Urban area typology**: INSEE, Aires d'attraction des villes 2020 -- https://www.insee.fr/fr/information/4803954
+- **Population density**: INSEE, Grille de densité 2015 -- https://www.insee.fr/fr/information/6439600
+- **Coastal municipalities**: DATAR, Loi Littoral classification -- https://www.data.gouv.fr/datasets/communes-de-la-loi-littoral-au-code-officiel-geographique-cog-2020-2022
+- **Mountain municipalities**: DATAR, Loi Montagne classification -- https://www.data.gouv.fr/datasets/communes-de-montagne-30383014
+- **Financial health score**: AFL (Agence France Locale), proprietary banking formula combining several financial ratios to assess municipal fiscal soundness.
 
-### Geographic Data (not provided, required for map figure only)
-- **Municipal boundaries**: IGN AdminExpress, `geo_commune_2022.shp` — https://geoservices.ign.fr/adminexpress
+### Geographic Data (required for map figure only)
+- **Municipal boundaries**: `geo_commune_2022.shp` -- https://www.data.gouv.fr/datasets/decoupage-administratif-communal-francais-issu-d-openstreetmap
 - **National boundaries**: `fr.shp` — available from the same source
 
 ---
 
-## Provided Files
-
-Two processed files are provided in the `data/` folder. Raw data files are not included due to size constraints but can be downloaded at the sources listed above and reproduced using `code/00_prepare_data.R`.
-
-- `data_budgetco.parquet` — Municipal budget accounts merged with socioeconomic and geographic controls, 2000--2024, one observation per municipality × year
-- `catnat_gaspar.csv` — Raw natural disaster records from GASPAR, 1982--2024, one observation per disaster event
-
----
-
 ## Variable Dictionary
-
-### `data_budgetco.parquet`
-*One observation per municipality × year. Budget variables expressed in nominal euros per inhabitant.*
 
 #### Identifiers
 | Variable | Description |
