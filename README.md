@@ -15,20 +15,11 @@ This repository contains the replication code for the paper *"When Nature Strike
     │   ├── data_budgetco.parquet
     │   └── catnat_gaspar.csv
     ├── code/
-    │   ├── 00_prepare_data.R
+    │   ├── 00_prepare_data_public.R
     │   ├── 01_build_sample.R
     │   ├── 02_estimation.R
     │   ├── 03_figures.R
     │   └── 04_tables.R
-    ├── results/
-    │   ├── main/
-    │   ├── heterogeneity/
-    │   │   ├── nb_floods/
-    │   │   ├── afl/
-    │   │   └── income/
-    │   └── robustness/
-    ├── figures/
-    └── tables/
 
 ## Data
 
@@ -51,6 +42,11 @@ Two processed datasets are provided in the `data/` folder. `data_budgetco.parque
 **Warning**: `02_estimation.R` is computationally intensive. Each estimation takes approximately 30--60 minutes. The full set of estimations may take several days to complete.
 
 **Output paths**: By default, results are saved to `results/`, figures to `figures/`, and tables to `tables/`. Adapt the `results_path` variable at the top of each script to match your local setup.
+
+## Note on Replication
+
+All results except the heterogeneity analysis by financial health are fully replicable from the provided data and code. 
+The AFL financial health score used in Table 4 is based on a proprietary banking formula and the corresponding data are not publicly available. Results from this analysis are available upon reasonable request.
 
 ## Estimation Method
 
