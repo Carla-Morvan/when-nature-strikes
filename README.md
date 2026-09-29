@@ -63,6 +63,4 @@ Reference: de Chaisemartin, C. & D'Haultfoeuille, X. (2024). *Difference-in-Diff
 
 The main estimation sample is restricted to municipalities whose last recorded disaster before 2000 was the 1999 storms Lothar and Martin, ensuring a common pre-treatment baseline across municipalities. See Section 2.3 of the paper for details.
 
-## Contact
 
-Carla Morvan
