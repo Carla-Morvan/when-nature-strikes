@@ -1,6 +1,6 @@
 # When Nature Strikes Repeatedly: Are Municipalities Fiscally Resilient?
 
-**Carla Morvan**, 2026
+2026
 
 ## Overview
 
